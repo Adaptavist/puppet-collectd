@@ -1,0 +1,17 @@
+### File managed with puppet ###
+#### Served by:        '<%= scope.lookupvar('::servername') %>'
+#### Module:           '<%= scope.to_hash['module_name'] %>'
+#### Template source:  '<%= template_source %>'
+
+# Config file for collectd(1).
+
+LoadPlugin syslog
+<Plugin syslog>
+	LogLevel info
+</Plugin>
+
+Include "<%= @collectd_plugins_root %>/*.conf"
+
+<% @collectd_included_conf.each do |conf| -%>
+Include "<%=@collectd_install_dir%>/<%=conf%>"
+<% end -%>

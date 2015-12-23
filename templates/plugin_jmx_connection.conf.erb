@@ -1,0 +1,16 @@
+  <Connection>
+    ServiceURL <%= used_service_url %>
+<% if @user -%>
+    User "<%= @user %>"
+    Password "<%= @password %>"
+<% end -%>
+<% if @host -%>
+    Host "<%= @host %>"
+<% if @port -%>
+    Port "<%= @port %>"
+<% end -%>
+<% end -%>
+<% @collect.each do |mbean| -%>
+    Collect "<%= mbean %>"
+<% end -%>
+  </Connection>

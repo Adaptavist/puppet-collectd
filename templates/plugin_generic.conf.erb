@@ -1,0 +1,17 @@
+### File managed with puppet ###
+#### Served by:        '<%= scope.lookupvar('::servername') %>'
+#### Module:           '<%= scope.to_hash['module_name'] %>'
+#### Template source:  '<%= template_source %>'
+
+<% if @interval -%>
+<LoadPlugin "<%= @type %>">
+  Interval <%= @interval %>
+</LoadPlugin>
+<% else -%>
+LoadPlugin "<%= @type %>"
+<% end -%>
+<% if @lines.size > 0 -%>
+<Plugin "<%= @type %>">
+  <%= @lines.join("\n  ") %>
+</Plugin>
+<% end -%>

@@ -1,0 +1,24 @@
+  <MBean "<%= @name %>">
+    ObjectName "<%= @object_name %>"
+<% if @instance_prefix -%>
+    InstancePrefix "<%= @instance_prefix %>"
+<% end -%>
+<% if @instance_from -%>
+    InstanceFrom "<%= @instance_from %>"
+<% end -%>
+<% @values_for_template.each do |value| -%>
+    <Value>
+      Type "<%= value["type"] %>"
+<% if value["instance_prefix"] -%>
+      InstancePrefix "<%= value["instance_prefix"] %>"
+<% end -%>
+<% if value["instance_from"] -%>
+      InstanceFrom "<%= value["instance_from"] %>"
+<% end -%>
+<% if value["table"] -%>
+      InstanceFrom "<%= value["table"] %>"
+<% end -%>
+      Attribute "<%= value["attribute"] %>"
+    </Value>
+<% end -%>
+  </MBean>
