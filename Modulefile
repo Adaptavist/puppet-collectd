@@ -1,6 +1,6 @@
 name    'adaptavist-collectd'
-version '0.2.7'
-source 'git@stash.adaptavist.com:7999/pup/puppet-collectd.git'
+version '0.2.8'
+source 'https://github.com/Adaptavist/puppet-collectd.git'
 author 'Adaptavist'
 license 'apache2'
 summary 'CollectD Module'
@@ -13,7 +13,7 @@ network, and can optionally write it into graphite. (collectd 5.x required)
 
 CollectD has various plugins that can be configured via hiera and activated
 to collectd specific data.'
-project_page 'https://stash.adaptavist.com/projects/PUP/repos/puppet-collectd'
+project_page 'https://github.com/Adaptavist/puppet-collectd'
 
 ## Add dependencies, if any:
 dependency 'puppetlabs/stdlib', '>= 2.4.0'
