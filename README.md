@@ -1,4 +1,5 @@
 # CollectD module
+[![Build Status](https://travis-ci.org/Adaptavist/puppet-collectd.svg?branch=master)](https://travis-ci.org/Adaptavist/puppet-collectd)
 
 The collectd parametized class installs a collectd agent on Ubuntu and CentOS
 linux, and can be customized to monitor various server statistics and health
