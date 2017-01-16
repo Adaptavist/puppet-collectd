@@ -26,7 +26,7 @@ class collectd::server(
         "SecurityLevel \"${collectd_auth_security_level}\"",
         "AuthFile \"${collectd_auth_file}\"",
       '</Listen>' ]
-    
+
     file {$collectd_auth_file:
       ensure  => file,
       content => $collectd_auth_file_content,
@@ -39,7 +39,7 @@ class collectd::server(
     $real_lines = ["Listen \"${listen_host}\" \"${listen_port}\""]
     $listen_require = 'Class[Collectd]'
   }
-  
+
   collectd::plugin { 'server_network_listen':
     type    => 'network',
     lines   => $real_lines,

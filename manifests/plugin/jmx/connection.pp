@@ -6,7 +6,8 @@ define collectd::plugin::jmx::connection(
   $port        = undef,
   $collect     = [ 'classes', 'compilation',
                   'garbage_collector', 'memory',
-                  'memory_pool' ]
+                  'memory_pool' ],
+  $target      = $collectd::plugin::jmx::conf_file
 ) {
 
   if $service_url == undef {
@@ -18,5 +19,6 @@ define collectd::plugin::jmx::connection(
   collectd::plugin::jmx::register { $name:
     content => template("${module_name}/plugin_jmx_connection.conf.erb"),
     order   => 30,
+    target  => $target
   }
 }

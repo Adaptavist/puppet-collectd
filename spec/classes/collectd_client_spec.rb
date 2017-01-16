@@ -21,7 +21,7 @@ describe 'collectd::client', :type => 'class' do
       it do
         should contain_collectd__plugin('client').with(
           'type' => 'network',
-          'lines' => "Server \"#{server_host}\" \"#{server_port}\""
+          'lines' => ["Server \"#{server_host}\" \"#{server_port}\""]
         )
       end
     end

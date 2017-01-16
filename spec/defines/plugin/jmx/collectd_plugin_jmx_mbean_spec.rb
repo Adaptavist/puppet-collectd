@@ -9,7 +9,7 @@ value = {
     'table' => true,
     'attribute' => 'Usage'
 }
-
+target = 'target'
 values = [
             {
             'type' => 'jmx_memory',
@@ -39,7 +39,10 @@ describe 'collectd::plugin::jmx::mbean', :type => 'define' do
     end
 
     context "should work with default parameters" do
-    let(:params){{ :object_name => object_name}}
+    let(:params){{ 
+        :object_name => object_name,
+        :target => target 
+    }}
     it do
         should contain_collectd__plugin__jmx__register(def_title).with(
           'order' => 20,
@@ -59,6 +62,7 @@ describe 'collectd::plugin::jmx::mbean', :type => 'define' do
         :instance_prefix => instance_prefix,
         :instance_from => instance_from,
         :value => value,
+        :target => target
         }}
     it do
         should contain_collectd__plugin__jmx__register(def_title).with(
@@ -83,10 +87,12 @@ describe 'collectd::plugin::jmx::mbean', :type => 'define' do
         :instance_from => instance_from,
         :value => value,
         :values => values,
+        :target => target
         }}
+
     it do
         should contain_collectd__plugin__jmx__register(def_title).with(
-          'order' => 20,
+          'order' => 20
         ).with_content(/<MBean \"classes\">/)
         .with_content(/ObjectName \"#{object_name}\"/)
         .with_content(/InstancePrefix \"#{instance_prefix}\"/)

@@ -35,7 +35,7 @@ describe 'collectd::server', :type => 'class' do
       it do
         should contain_collectd__plugin('server_network_listen').with(
           'type' => 'network',
-          'lines' => "Listen \"#{def_listen_host}\" \"#{def_listen_port}\"",
+          'lines' => ["Listen \"#{def_listen_host}\" \"#{def_listen_port}\""],
         )
       end
     end
@@ -48,7 +48,7 @@ describe 'collectd::server', :type => 'class' do
       it do
         should contain_collectd__plugin('server_network_listen').with(
           'type' => 'network',
-          'lines' => "Listen \"#{listen_host}\" \"#{listen_port}\"",
+          'lines' => ["Listen \"#{listen_host}\" \"#{listen_port}\""]
         )
       end
     end

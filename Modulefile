@@ -1,5 +1,5 @@
 name    'adaptavist-collectd'
-version '0.2.11'
+version '1.0.0'
 source 'https://github.com/Adaptavist/puppet-collectd.git'
 author 'Adaptavist'
 license 'apache2'

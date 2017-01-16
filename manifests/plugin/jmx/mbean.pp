@@ -4,7 +4,8 @@ define collectd::plugin::jmx::mbean(
   $instance_from   = undef,
   $table           = undef,
   $value           = {},
-  $values          = undef
+  $values          = undef,
+  $target          = $collectd::plugin::jmx::conf_file
 ) {
 
   if $values {
@@ -15,7 +16,8 @@ define collectd::plugin::jmx::mbean(
 
   collectd::plugin::jmx::register { $name:
     content => template("${module_name}/plugin_jmx_mbean.conf.erb"),
-    order   => 20
+    order   => 20,
+    target  => $target
   }
 
 }

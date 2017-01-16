@@ -8,6 +8,8 @@ def_service_url = "service:jmx:rmi:///jndi/rmi://${host}:${port}/jmxrmi"
 user        = 'user'
 password    = 'passwd'
 
+target = "target"
+
 collect = [ 'classes',
             'compilation',
             'garbage_collector',
@@ -25,11 +27,12 @@ describe 'collectd::plugin::jmx::connection', :type => 'define' do
     let :title do
       def_title
     end
-    let :facts do
-    {
-      :concat_basedir => '/tmp'
-    }
-    end
+    let(:facts) {{
+        :concat_basedir => '/tmp'
+    }}
+    let(:params){{
+        :target => target
+    }}
 
     context "should work with default parameters, check default collection" do
     it do
@@ -50,6 +53,7 @@ describe 'collectd::plugin::jmx::connection', :type => 'define' do
     let(:params){{
         :host => host,
         :port => port,
+        :target => target
         }}
     it do
         should contain_collectd__plugin__jmx__register(def_title).with(
@@ -73,6 +77,7 @@ describe 'collectd::plugin::jmx::connection', :type => 'define' do
         :host => host,
         :port => port,
         :collect => collect,
+        :target => target
         }}
     it do
         should contain_collectd__plugin__jmx__register(def_title).with(
