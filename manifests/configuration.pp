@@ -10,10 +10,9 @@ class collectd::configuration(
 
   file {['/usr/var', '/usr/var/lib', '/usr/var/lib/collectd']:
               ensure => directory,
-              owner  => $::user,
-              group  => $::group,
-  } ->
-  file { $collectd_conf_file:
+              owner  => $collectd::user,
+              group  => $collectd::group,
+  } -> file { $collectd_conf_file:
     ensure  => $collectd_ensure,
     mode    => '0644',
     owner   => $collectd_owner,

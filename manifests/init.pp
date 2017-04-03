@@ -51,8 +51,5 @@ class collectd(
     default => 'selinux-policy-targeted',
   }
 
-  class { 'collectd::packages': } ->
-  class { 'collectd::configuration': } ~>
-  class { 'collectd::services': } ->
-  Class['collectd']
+  class { 'collectd::packages': } -> class { 'collectd::configuration': } ~> class { 'collectd::services': } -> Class['collectd']
 }
